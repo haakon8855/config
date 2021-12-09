@@ -5,41 +5,42 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+alias ls='ls --color=auto'
 export PS1='\[\e[36m\]\A\[\e[m\] [\[\e[32m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\] \W] \[\e[36m\]\\$\[\e[m\] '
 
-alias ls='ls --color=auto'			# ls colors
-alias la="ls -a"				# ls show hidden
-alias ll="ls -la"				# ls list show hidden
+# runc(){ # $1 is infile, $2 is outfile
+	# local infile="$1"
+	# local outfile=${infile%.*}
+	# gcc "$infile" -o "$outfile"
+	# ./"$outfile"
+# }
 
-alias ins="sudo apt install"			# install
-alias rem="sudo apt remove"			# uninstall
-alias autorem="sudo apt autoremove"		# autoremove
-alias upd="sudo apt update"			# update
-alias upg="sudo apt upgrade"			# upgrade
-alias search="sudo apt-cache search"		# search
+alias la="ls -a"
+alias ll="ls -la"
+alias sl="sl -l"
 
-alias clr="clear"				# clear terminal
-alias sl="sl -l"				# tiny sl
-alias here="xdg-open ."				# open explorer in cd
+# APT package manager
+# alias ins="sudo apt install"
+# alias rem="sudo apt remove"
+# alias upd="sudo apt update"
+# alias upg="sudo apt upgrade"
+# alias search="sudo apt-cache search"
 
-alias lstrash="ls ~/.local/share/Trash/files"
-alias rmtrash="trash-empty"
+alias clr="clear"
 
-# python
-alias py="python3.8"
-alias pip="pip3.8"
+alias oned="cd 'c:/Users/haako/OneDrive - NTNU/'"
 
-# java
-alias java8="/usr/lib/jvm/java-8-openjdk-amd64/bin/java"
+# Python
+alias py="python"
+alias pip="pip3"
 
-# django
-alias runserver="py manage.py runserver"
-alias createsu="py manage.py createsuperuser"
-alias makemigrations="py manage.py makemigrations"
-alias migrate="py manage.py migrate"
+# alias for opening todo.md
+alias todo="vim ~/todo.md"
 
-# Add stuff to PATH
+# alias for listing all installed packages in chocolatey
+alias chocolist="choco list --local-only"
+
+bind -x '"\e[1;3S":"exit"'
+
 export PATH=$PATH:~/.scripts/
-export PATH=$PATH:/snap/bin/
-export PATH=$PATH:/home/haako/.local/bin/
-
+export DISPLAY=:0.0
