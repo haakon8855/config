@@ -1,2 +1,2 @@
 # config_files
-This is a backup of some of my config files I use.
+This is a backup of some of the config files I use.
