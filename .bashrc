@@ -19,16 +19,10 @@ alias la="ls -a"
 alias ll="ls -la"
 alias sl="sl -l"
 
-# APT package manager
-# alias ins="sudo apt install"
-# alias rem="sudo apt remove"
-# alias upd="sudo apt update"
-# alias upg="sudo apt upgrade"
-# alias search="sudo apt-cache search"
-
 alias clr="clear"
 
-alias oned="cd 'c:/Users/haako/OneDrive - NTNU/'"
+# alias oned="cd 'c:/Users/haako/OneDrive - NTNU/'"
+alias drive="cd 'G:/My Drive/'"
 
 # Python
 alias py="python"
@@ -37,8 +31,18 @@ alias pip="pip3"
 # alias for opening todo.md
 alias todo="vim ~/todo.md"
 
-# alias for listing all installed packages in chocolatey
+# Chocolatey package manager
 alias chocolist="choco list --local-only"
+alias ins="choco install"
+alias unins="choco uninstall"
+
+# APT package manager
+# alias ins="sudo apt install"
+# alias rem="sudo apt remove"
+# alias upd="sudo apt update"
+# alias upg="sudo apt upgrade"
+# alias search="sudo apt-cache search"
+
 
 bind -x '"\e[1;3S":"exit"'
 
