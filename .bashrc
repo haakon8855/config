@@ -35,6 +35,8 @@ alias todo="vim ~/todo.md"
 alias chocolist="choco list"
 alias ins="choco install"
 alias unins="choco uninstall"
+alias upg="choco upgrade"
+alias search="choco search"
 
 # APT package manager
 # alias ins="sudo apt install"
@@ -44,8 +46,11 @@ alias unins="choco uninstall"
 # alias search="sudo apt-cache search"
 
 
-# Visual Studio
-alias visual="'C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.exe'"
+# Function opening a folder or file in Visual Studio 2022 and resuming the terminal
+visual(){
+	local path="$1"
+	"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.exe" "$path" &
+}
 
 
 bind -x '"\e[1;3S":"exit"'
