@@ -23,7 +23,10 @@ endfunction
 " Map function to <Shift-k>
 map K :call AppendSemicolon()<CR>
 
-" Fix diacritical chars (æ, ø, å, etc.)
+" Map comma to @@ (repeat last macro)
+map , @@
+
+" Fix diacritical chars (ï¿½, ï¿½, ï¿½, etc.)
 set encoding=utf-8
 
 " Turn on syntax highlighting.
