@@ -1,0 +1,14 @@
+[user]
+	email =
+	name =
+[alias]
+	aliases = config --get-regexp alias
+	reuse = commit --reedit-message=HEAD --reset-author
+	fastamend = commit --amend --no-edit --reset-author
+	st = status
+	ch = checkout
+	br = branch
+	list = log --oneline
+	flog = log --oneline
+[push]
+	autoSetupRemote = true
