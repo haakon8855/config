@@ -1,6 +1,7 @@
 [user]
-	email =
-	name =
+	email = 
+	name = 
+	signingKey = 
 [alias]
 	aliases = config --get-regexp alias
 	reuse = commit --reedit-message=HEAD --reset-author
@@ -10,5 +11,11 @@
 	br = branch
 	list = log --oneline
 	flog = log --oneline
+	graph = log --graph --decorate --pretty=oneline --abbrev-commit --all
 [push]
 	autoSetupRemote = true
+[gpg]
+	format = ssh
+[commit]
+	gpgSign = true
+
