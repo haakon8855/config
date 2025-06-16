@@ -1,11 +1,12 @@
 " Haakon's vimrc
 
 
-
 " Main settings
 "
 " Disable Vi compatibility (thus enabling more Vim features)
 set nocompatible
+" Use system clipboard
+set clipboard=unnamed
 " Fix diacritical chars (�, �, �, etc.)
 set encoding=utf-8
 " Disable the default Vim startup message
@@ -38,7 +39,6 @@ set softtabstop=4
 set shiftwidth=4
 
 
-
 " Other settings
 "
 " Set wrap at column, only in .md-files
@@ -47,7 +47,6 @@ au filetype markdown set textwidth=100
 syntax enable
 " Set color scheme
 colorscheme monokai
-
 
 
 " Key remaps
@@ -61,7 +60,15 @@ nmap <c-s-j> :m +1<CR>
 nmap Q <Nop>
 " Disable command line mode
 map q: <Nop>
-
+" Map buffer switching
+let mapleader = "ø"
+nmap <leader>h <C-W>h
+nmap <leader>j <C-W>j
+nmap <leader>k <C-W>k
+nmap <leader>l <C-W>l
+nmap <leader><leader> <C-W><C-W>
+" Map æ to end of line
+nmap æ $
 
 
 " Macros
@@ -75,4 +82,3 @@ function! AppendSemicolon()
 endfunction
 " Map macro to <Shift-k>
 map K :call AppendSemicolon()<CR>
-
