@@ -10,7 +10,6 @@
 	ch = checkout
 	br = branch
 	list = log --oneline
-	flog = log --oneline
 	graph = log --graph --decorate --pretty=oneline --abbrev-commit --all
 [push]
 	autoSetupRemote = true
