@@ -1,6 +1,27 @@
 " Haakon's vimrc
 
 
+
+" Plugins (vim-plug)
+"
+" Install vim-plug if not installed
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+" Install plugins
+call plug#begin()
+"Plug 'crusoexia/vim-monokai'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdtree'
+Plug 'yggdroot/indentline'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+Plug 'itchyny/lightline.vim'
+Plug 'tomasiser/vim-code-dark'
+call plug#end()"
+
+
+
 " Main settings
 "
 " Disable Vi compatibility (thus enabling more Vim features)
@@ -39,6 +60,7 @@ set softtabstop=4
 set shiftwidth=4
 
 
+
 " Other settings
 "
 " Set wrap at column, only in .md-files
@@ -46,7 +68,9 @@ au filetype markdown set textwidth=100
 " Turn on syntax highlighting.
 syntax enable
 " Set color scheme
-colorscheme monokai
+"colorscheme monokai
+colorscheme codedark
+
 
 
 " Key remaps
