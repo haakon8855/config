@@ -35,22 +35,14 @@ alias todo="vim ~/todo.md"
 
 # Chocolatey package manager
 alias chocolist="choco list"
-alias ins="choco install"
-alias rem="choco uninstall"
-alias upg="choco upgrade"
-alias search="choco search"
 
-# APT package manager
-# alias ins="sudo apt install"
-# alias rem="sudo apt remove"
-# alias upd="sudo apt update"
-# alias upg="sudo apt upgrade"
-# alias search="sudo apt-cache search"
+# Winget package manager
+alias ins="winget install"
+alias rem="winget uninstall"
+alias upd="winget update"
+alias search="winget search"
 
-# # Typing test
-# alias tt="wsl tt"
-
-
+alias sl="wsl sl -l"
 
 # Function opening a folder or file in Visual Studio 2022 and resuming the terminal
 visual(){
