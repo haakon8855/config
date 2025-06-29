@@ -18,6 +18,7 @@ Plug 'yggdroot/indentline'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 Plug 'itchyny/lightline.vim'
 Plug 'tomasiser/vim-code-dark'
+Plug 'mg979/vim-visual-multi'
 call plug#end()"
 
 
@@ -73,7 +74,7 @@ colorscheme codedark
 
 
 
-" Key remaps
+" Keymaps
 "
 " Don't yank on paste
 vmap p "_dP
@@ -95,6 +96,14 @@ nmap <leader><leader> <C-W><C-W>
 nmap æ $
 
 
+
+" Plugin specific keymaps
+"
+" Toogle NERDTree
+nnoremap <leader>n :NERDTreeToggle<cr>
+
+
+
 " Macros
 "
 " Append ';' at EOL
@@ -106,3 +115,4 @@ function! AppendSemicolon()
 endfunction
 " Map macro to <Shift-k>
 map K :call AppendSemicolon()<CR>
+
