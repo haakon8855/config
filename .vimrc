@@ -11,7 +11,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 " Install plugins
 call plug#begin()
-"Plug 'crusoexia/vim-monokai'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
 Plug 'yggdroot/indentline'
@@ -19,7 +18,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' 
 Plug 'itchyny/lightline.vim'
 Plug 'tomasiser/vim-code-dark'
 Plug 'mg979/vim-visual-multi'
-call plug#end()"
+Plug 'machakann/vim-highlightedyank'
+call plug#end()
 
 
 
