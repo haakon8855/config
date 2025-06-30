@@ -14,7 +14,10 @@ call plug#begin()
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
 Plug 'yggdroot/indentline'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+Plug 'iamcco/markdown-preview.nvim', {
+	\ 'do': 'cd app && npx --yes yarn install',
+	\ 'for': 'markdown'
+	\ }
 Plug 'itchyny/lightline.vim'
 Plug 'tomasiser/vim-code-dark'
 Plug 'mg979/vim-visual-multi'
