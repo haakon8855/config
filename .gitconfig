@@ -2,19 +2,35 @@
 	email = 
 	name = 
 	signingKey = 
+
 [alias]
+	# show a list of these aliases
 	aliases = config --get-regexp alias
+	# git commit, but copy last commit's message and open vim
 	reuse = commit --reedit-message=HEAD --reset-author
+	# amend last commit without updating commit message
 	fastamend = commit --amend --no-edit --reset-author
+	# shorthands
 	st = status
 	ch = checkout
 	br = branch
+	# condensed git log with only hash, message and tags
 	list = log --oneline
+	# graph view (git log but with all branches and where they diverged and/or merged)
 	graph = log --graph --decorate --pretty=oneline --abbrev-commit --all
+
 [push]
+	# Auto-create remote when pushing new branches
 	autoSetupRemote = true
+
 [gpg]
+	# Use ssh key for signing
 	format = ssh
+
 [commit]
+	# Auto-sign commits
 	gpgSign = true
 
+# Additional git config when instide specific subdirectory
+# [includeIf "gitdir:~/git/<subdirectory>/**"]
+	# path = ~/git/<subdirectory>/.gitconfig
