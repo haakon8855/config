@@ -5,36 +5,31 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
+# Custom prompt (hh:mm [<username>@<hostname> <dir>] $)
 export PS1='\[\e[36m\]\A\[\e[m\] [\[\e[32m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\] \W] \[\e[36m\]\\$\[\e[m\] '
 
-# runc(){ # $1 is infile, $2 is outfile
-	# local infile="$1"
-	# local outfile=${infile%.*}
-	# gcc "$infile" -o "$outfile"
-	# ./"$outfile"
-# }
-
+# Enable ls colorized
+# and other ls aliases
+alias ls='ls --color=auto'
 alias la="ls -a"
 alias ll="ls -la"
 alias sl="sl -l"
 
+# Clear screen with clr
 alias clr="clear"
 
+# Open windows exporer to current working directory
 alias here="explorer ."
 
-# alias oned="cd 'c:/Users/haako/OneDrive - NTNU/'"
+# cd to Google Drive
 alias drive="cd 'G:/My Drive/'"
 
-# Python
+# Python aliases
 alias py="python"
 alias pip="pip3"
 
-# alias for opening todo.md
+# Open todo.md in vim
 alias todo="vim ~/todo.md"
-
-# Chocolatey package manager
-alias chocolist="choco list"
 
 # Winget package manager
 alias ins="winget install"
@@ -42,20 +37,8 @@ alias rem="winget uninstall"
 alias upd="winget update"
 alias search="winget search"
 
+# sl command (essential)
 alias sl="wsl sl -l"
-
-# Function opening a folder or file in Visual Studio 2022 and resuming the terminal
-visual(){
-	local path="$1"
-	"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.exe" "$path" &
-}
-
-
-bind -x '"\e[1;3S":"exit"'
-
-# # The Fuck
-# export PYTHONIOENCODING=utf-8
-# eval "$(thefuck --alias)"
 
 export PATH=$PATH:~/.scripts/
 export DISPLAY=:0.0
