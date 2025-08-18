@@ -4,24 +4,39 @@
 	signingKey = 
 
 [alias]
-	# show a list of these aliases
+	# Show a list of these aliases
 	aliases = config --get-regexp alias
-	# git commit, but copy last commit's message and open vim
+	# Git commit, but copy last commit's message and open vim
 	reuse = commit --reedit-message=HEAD --reset-author
-	# amend last commit without updating commit message
+	# Amend commit
+	amend = commit --amend
+	# Amend last commit without updating commit message
 	fastamend = commit --amend --no-edit --reset-author
-	# shorthands
+	# Condensed git log with only hash, message and tags
+	list = log --oneline
+	# Graph view (git log but with all branches and where they diverged and/or merged)
+	graph = log --graph --decorate \
+	  --pretty=format:'%C(auto)%h%d %s %C(blue)<%an>%Creset %C(green)%cr%Creset' \
+	  --abbrev-commit --all
+	# Condensed graph view
+	minigraph = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	# Unstage all staged changes
+	unstage = reset HEAD --
+	# Git log, but only show commit at HEAD
+	head = log -1 HEAD
+	# Shorthands
 	st = status
 	ch = checkout
 	br = branch
-	# condensed git log with only hash, message and tags
-	list = log --oneline
-	# graph view (git log but with all branches and where they diverged and/or merged)
-	graph = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	gr = graph
 
 [push]
 	# Auto-create remote when pushing new branches
 	autoSetupRemote = true
+
+[pull]
+	# Disable merge on pull (only allow fast-forward)
+	ff = only
 
 [gpg]
 	# Use ssh key for signing
