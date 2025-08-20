@@ -7,44 +7,44 @@
 	# Show a list of these aliases
 	aliases = config --get-regexp alias
 	# Git commit, but copy last commit's message and open vim
-	reuse = commit --reedit-message=HEAD --reset-author
-	# Amend commit
+	reuse = commit --reedit-message=head --reset-author
+	# amend commit
 	amend = commit --amend
-	# Amend last commit without updating commit message
+	# amend last commit without updating commit message
 	fastamend = commit --amend --no-edit --reset-author
-	# Condensed git log with only hash, message and tags
+	# condensed git log with only hash, message and tags
 	list = log --oneline
-	# Graph view (git log but with all branches and where they diverged and/or merged)
+	# graph view (git log but with all branches and where they diverged and/or merged)
 	graph = log --graph --decorate \
 	  --pretty=format:'%C(auto)%h%d %s %C(blue)<%an>%Creset %C(green)%cr%Creset' \
 	  --abbrev-commit --all
-	# Condensed graph view
+	# condensed graph view
 	minigraph = log --graph --decorate --pretty=oneline --abbrev-commit --all
-	# Unstage all staged changes
-	unstage = reset HEAD --
-	# Git log, but only show commit at HEAD
-	head = log -1 HEAD
-	# Shorthands
+	# unstage all staged changes
+	unstage = reset head --
+	# git log, but only show commit at head
+	head = log -1 head
+	# shorthands
 	st = status
 	ch = checkout
 	br = branch
 	gr = graph
 
 [push]
-	# Auto-create remote when pushing new branches
-	autoSetupRemote = true
+	# auto-create remote when pushing new branches
+	autosetupremote = true
 
 [pull]
-	# Disable merge on pull (only allow fast-forward)
+	# disable merge on pull (only allow fast-forward)
 	ff = only
 
 [gpg]
-	# Use ssh key for signing
+	# use ssh key for signing
 	format = ssh
 
 [commit]
-	# Auto-sign commits
-	gpgSign = true
+	# auto-sign commits
+	gpgsign = true
 
 # Additional git config when instide specific subdirectory
 # [includeIf "gitdir:~/git/<subdirectory>/**"]
