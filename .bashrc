@@ -37,6 +37,9 @@ alias rem="winget uninstall"
 alias upd="winget update"
 alias search="winget search"
 
+# Typos
+alias gti="git"
+
 # sl command (essential)
 alias sl="wsl sl -l"
 
