@@ -39,18 +39,14 @@ alias rem="winget uninstall"
 alias upd="winget update"
 alias search="winget search"
 
-# APT package manager
-# alias ins="sudo apt install"
-# alias rem="sudo apt remove"
-# alias upd="sudo apt update"
-# alias upg="sudo apt upgrade"
-# alias search="sudo apt-cache search"
-
-# Typos
+# Typo
 alias gti="git"
 
 # sl command (essential)
 alias sl="wsl sl -l"
+
+# Load custom bashrc for specific setup
+# source ~/.secondarybashrc
 
 export PATH=$PATH:~/.scripts/
 export DISPLAY=:0.0
