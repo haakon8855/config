@@ -12,14 +12,14 @@ endif
 " Install plugins
 call plug#begin()
 Plug 'tpope/vim-surround'
-Plug 'yggdroot/indentline'
 Plug 'iamcco/markdown-preview.nvim', {
 	\ 'do': 'cd app && npx --yes yarn install',
 	\ 'for': 'markdown'
 	\ }
-Plug 'itchyny/lightline.vim'
 Plug 'tomasiser/vim-code-dark'
 Plug 'machakann/vim-highlightedyank'
+" Plug 'yggdroot/indentline'
+" Plug 'itchyny/lightline.vim'
 call plug#end()
 
 
@@ -70,7 +70,6 @@ au filetype markdown set textwidth=100
 " Turn on syntax highlighting.
 syntax enable
 " Set color scheme
-"colorscheme monokai
 colorscheme codedark
 
 
