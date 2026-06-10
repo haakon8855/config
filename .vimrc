@@ -13,13 +13,13 @@ endif
 call plug#begin()
 Plug 'tpope/vim-surround'
 Plug 'iamcco/markdown-preview.nvim', {
-	\ 'do': 'cd app && npx --yes yarn install',
-	\ 'for': 'markdown'
+	\ 'do': 'cd app && npm install',
+	\ 'for': ['markdown', 'vim-plug']
 	\ }
 Plug 'tomasiser/vim-code-dark'
 Plug 'machakann/vim-highlightedyank'
 " Plug 'yggdroot/indentline'
-" Plug 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim'
 call plug#end()
 
 
@@ -94,6 +94,10 @@ nmap <leader>l <C-W>l
 nmap <leader><leader> <C-W><C-W>
 " Map æ to end of line
 nmap æ $
+" Capitalize first letter of current word
+nnoremap <leader>u wbvU
+" Split line at first word starting before column 80
+nnoremap <leader>m 081lF<Space>s<CR><Esc>
 
 
 
@@ -108,4 +112,3 @@ function! AppendSemicolon()
 endfunction
 " Map macro to <Shift-k>
 map K :call AppendSemicolon()<CR>
-
