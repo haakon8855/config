@@ -1,4 +1,5 @@
 " Haakon's vimrc
+set runtimepath^=~/.vim
 
 
 
@@ -65,8 +66,6 @@ set shiftwidth=4
 
 " Other settings
 "
-" Set wrap at column, only in .md-files
-au filetype markdown set textwidth=100
 " Turn on syntax highlighting.
 syntax enable
 " Set color scheme
@@ -99,7 +98,12 @@ nnoremap <leader>u wbvU
 " Split line at first word starting before column 80
 nnoremap <leader>m 081lF<Space>s<CR><Esc>
 
-
+" Spell check
+"
+" Enable spell check in markdown files
+autocmd FileType markdown setlocal spell spelllang=nb,en_gb,en_us
+" Remap spell check suggestions to øz
+nnoremap <leader>z z=
 
 " Macros
 "
