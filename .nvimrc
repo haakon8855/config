@@ -1,27 +1,31 @@
-" Haakon's vimrc
+" Haakon's nvimrc
 
-
+set runtimepath^=~/.nvim
+set shell=cmd.exe
 
 " Plugins (vim-plug)
 "
-" Set runtime path to ~/.vim
-set runtimepath^=~/.vim
 " Install vim-plug if not installed
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+if empty(glob(expand('~/.nvim/autoload/plug.vim')))
+  execute '!curl -fLo "' .. expand('~/.nvim/autoload/plug.vim') .. '" --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 " Install plugins
 call plug#begin()
 Plug 'tpope/vim-surround'
-Plug 'iamcco/markdown-preview.nvim', {
-	\ 'do': 'cd app && npm install',
-	\ 'for': ['markdown', 'vim-plug']
-	\ }
-Plug 'tomasiser/vim-code-dark'
 Plug 'machakann/vim-highlightedyank'
-" Plug 'yggdroot/indentline'
-Plug 'itchyny/lightline.vim'
+if exists('g:vscode')
+	" VSCode-only extension
+else
+	" Non-VSCode extensions
+	Plug 'iamcco/markdown-preview.nvim', {
+		\ 'do': 'cd app && npm install',
+		\ 'for': ['markdown', 'vim-plug']
+		\ }
+	Plug 'tomasiser/vim-code-dark'
+	Plug 'yggdroot/indentline'
+	Plug 'itchyny/lightline.vim'
+endif
 call plug#end()
 
 
@@ -30,6 +34,7 @@ call plug#end()
 "
 " Disable Vi compatibility (thus enabling more Vim features)
 set nocompatible
+filetype plugin indent on
 " Use system clipboard
 set clipboard=unnamed
 " Fix diacritical chars (�, �, �, etc.)
@@ -70,7 +75,11 @@ set shiftwidth=4
 " Turn on syntax highlighting.
 syntax enable
 " Set color scheme
-colorscheme codedark
+if exists('g:vscode')
+	" VSCode extension
+else
+	colorscheme codedark
+endif
 
 
 
@@ -96,7 +105,7 @@ nmap <leader><leader> <C-W><C-W>
 nmap æ $
 " Capitalize first letter of current word
 nnoremap <leader>u wbvU
-" Split line at first word starting before column 80
+" Split current line at char 80 with linebreak
 nnoremap <leader>m 081lF<Space>s<CR><Esc>
 
 " Spell check
@@ -117,3 +126,5 @@ function! AppendSemicolon()
 endfunction
 " Map macro to <Shift-k>
 map K :call AppendSemicolon()<CR>
+
+
