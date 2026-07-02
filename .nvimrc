@@ -44,11 +44,13 @@ require('lazy').setup({
 		'lukas-reineke/indent-blankline.nvim',
 		cond = not vim.g.vscode,
 		main = "ibl",
+		event = { 'BufReadPost', 'BufNewFile' },
 		opts = {},
 	},
 	{
 		'nvim-lualine/lualine.nvim',
 		cond = not vim.g.vscode,
+		event = 'VeryLazy',
 		opts = {
 			options = {
 				icons_enabled = false,
@@ -59,7 +61,11 @@ require('lazy').setup({
 	{
 		'folke/which-key.nvim',
 		cond = not vim.g.vscode,
-		opts = {},
+		opts = {
+			icons = {
+				mappings = false,
+			},
+		},
 	},
 	{
 		'windwp/nvim-autopairs',
@@ -111,6 +117,15 @@ require('lazy').setup({
 		'lewis6991/gitsigns.nvim',
 		cond = not vim.g.vscode,
 		opts = {},
+	},
+	{
+		'ethanholz/nvim-lastplace',
+		event = { 'BufReadPost' },
+		opts = {
+			lastplace_ignore_buftype = { 'quickfix', 'nofile', 'help' },
+			lastplace_ignore_filetype = { 'gitcommit', 'gitrebase', 'svn', 'hgcommit' },
+			lastplace_open_folds = true,
+		},
 	},
 })
 EOF
@@ -189,7 +204,5 @@ nnoremap <leader>u wbvU
 nnoremap <leader>m 081lF<Space>s<CR><Esc>
 " Remap spell check suggestions to øz
 nnoremap <leader>z z=
-
-
 
 
