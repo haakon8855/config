@@ -61,9 +61,29 @@ require('lazy').setup({
 	{
 		'folke/which-key.nvim',
 		cond = not vim.g.vscode,
+		event = 'VeryLazy',
 		opts = {
 			icons = {
 				mappings = false,
+			},
+			spec = {
+				-- Move lines
+				{ '<C-K>', ':m -2<CR>', desc = 'Move line up' },
+				{ '<C-J>', ':m +1<CR>', desc = 'Move line down' },
+
+				-- Window navigation
+				{ '<leader>h', '<C-w>h', desc = 'Window left' },
+				{ '<leader>j', '<C-w>j', desc = 'Window down' },
+				{ '<leader>k', '<C-w>k', desc = 'Window up' },
+				{ '<leader>l', '<C-w>l', desc = 'Window right' },
+				{ '<leader><leader>', '<C-w><C-w>', desc = 'Cycle windows' },
+
+				-- Capitalize first letter of current word
+				{ '<leader>u', 'wbvU', desc = 'Capitalize word' },
+				-- Split current line at first space before char 80
+				{ '<leader>m', '081lF<Space>s<CR><Esc>', desc = 'Split line' },
+				-- View spell check suggestions
+				{ '<leader>z', 'z=', desc = 'Spell suggestions' },
 			},
 		},
 	},
@@ -172,6 +192,8 @@ set shiftwidth=4
 syntax enable
 " Enable spell check in markdown files
 autocmd FileType markdown setlocal spell spelllang=nb,en_gb,en_us
+" Convert current file to use LF line endings
+command! LF set fileformat=unix
 
 
 
@@ -181,28 +203,10 @@ autocmd FileType markdown setlocal spell spelllang=nb,en_gb,en_us
 nnoremap K m`A;<Esc>``
 " Don't yank on paste
 vmap p "_dP
-" Ctrl+Shift+[k or j] moves current line up or down
-nmap <c-s-k> :m -2<CR>
-nmap <c-s-j> :m +1<CR>
 " Disable ex mode
 nmap Q <Nop>
 " Disable command line mode
 map q: <Nop>
-" Map buffer switching
-nmap <leader>h <C-W>h
-nmap <leader>j <C-W>j
-nmap <leader>k <C-W>k
-nmap <leader>l <C-W>l
-nmap <leader><leader> <C-W><C-W>
-" Toggle tree
-"nmap <leader>t <cmd>NvimTreeToggle<CR>
 " Map æ to end of line
 nmap æ $
-" Capitalize first letter of current word
-nnoremap <leader>u wbvU
-" Split current line at char 80 with linebreak
-nnoremap <leader>m 081lF<Space>s<CR><Esc>
-" Remap spell check suggestions to øz
-nnoremap <leader>z z=
-
 
