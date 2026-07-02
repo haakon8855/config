@@ -8,12 +8,18 @@
 set shell=cmd.exe
 " Map leader key
 let mapleader = "ø"
+let maplocalleader = ","
 
 
 
 " Plugins (lazy.nvim)
 "
 lua << EOF
+-- Highlighted yank
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function() vim.hl.on_yank() end,
+})
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -89,6 +95,8 @@ require('lazy').setup({
 				{ '<leader>m', '081lF<Space>s<CR><Esc>', desc = 'Split line' },
 				-- View spell check suggestions
 				{ '<leader>z', 'z=', desc = 'Spell suggestions' },
+				-- Go to next wrongly spelled word
+				{ 'zn', ']s', desc = 'Next misspelled word' },
 			},
 		},
 	},
@@ -140,6 +148,7 @@ require('lazy').setup({
 	},
 	{
 		'ethanholz/nvim-lastplace',
+		cond = not vim.g.vscode,
 		event = { 'BufReadPost' },
 		opts = {
 			lastplace_ignore_buftype = { 'quickfix', 'nofile', 'help' },
@@ -149,6 +158,7 @@ require('lazy').setup({
 	},
 	{
 		'petertriho/nvim-scrollbar',
+		cond = not vim.g.vscode,
 		event = 'VeryLazy',
 		opts = function()
 			local hl = vim.api.nvim_get_hl(0, { name = 'CursorLine' })
@@ -163,6 +173,12 @@ require('lazy').setup({
 				},
 			}
 		end,
+	},
+	{
+		'yousefhadder/markdown-plus.nvim',
+		cond = not vim.g.vscode,
+		ft = 'markdown',
+		opts = {},
 	},
 })
 EOF
@@ -179,14 +195,16 @@ set clipboard=unnamed
 set encoding=utf-8
 " Disable the default Vim startup message
 set shortmess+=I
-
+" Show line numbers (how is this not default on)
 set number
 " Use relative numbering style
 set relativenumber
 " Highlight current line
 set cursorline
+" One status line per window
+set laststatus=2
 " Always show the status line at the bottom
-set laststatus=0
+set cmdheight=1
 " Always allow backspacing
 set backspace=indent,eol,start
 " Case insensitive search
@@ -207,6 +225,10 @@ set colorcolumn=80,100
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+augroup filetype_settings
+	autocmd!
+	autocmd FileType markdown setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
 " Turn on syntax highlighting.
 syntax enable
 " Enable spell check in markdown files
@@ -228,4 +250,5 @@ nmap Q <Nop>
 map q: <Nop>
 " Map æ to end of line
 nmap æ $
+
 
