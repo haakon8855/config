@@ -3,6 +3,9 @@
 	name = 
 	signingKey = 
 
+[core]
+	editor = nvim
+
 [alias]
 	# Show a list of these aliases
 	aliases = config --get-regexp alias
