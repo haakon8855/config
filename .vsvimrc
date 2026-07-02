@@ -1,0 +1,35 @@
+" Visual mode mappings for surround using S<char>
+vnoremap S( c(<C-r>")<Esc>
+vnoremap S) c(<C-r>")<Esc>
+vnoremap S[ c[<C-r>"]<Esc>
+vnoremap S] c[<C-r>"]<Esc>
+vnoremap S{ c{<C-r>"}<Esc>
+vnoremap S} c{<C-r>"}<Esc>
+vnoremap S" c"<C-r>""<Esc>
+vnoremap S' c'<C-r>"'<Esc>
+vnoremap S< c<<C-r>"><Esc>
+vnoremap S> c<<C-r>"><Esc>
+
+" Main settings
+"
+" Use system clipboard
+set clipboard=unnamed
+" Show line numbers (how is this not default on)
+set number
+" Use relative numbering style
+set relativenumber
+" Always show the status line at the bottom
+set laststatus=2
+" Always allow backspacing
+set backspace=indent,eol,start
+" Case insensitive search
+set ignorecase
+" Unless you start entering uppercase letters
+set smartcase
+" Search while typing search term
+set incsearch
+" Set tab length
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
