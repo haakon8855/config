@@ -1,6 +1,11 @@
 " Haakon's nvimrc
 
+
+
+" Set background shell to use (only on Windows)
 set shell=cmd.exe
+
+
 
 " Plugins (vim.pack)
 "
@@ -18,6 +23,7 @@ vim.api.nvim_create_autocmd('PackChanged', {
 		end
 	end
 })
+
 -- Disable netrw (recommended by nvim-tree)
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -36,6 +42,10 @@ if not vim.g.vscode then
     'https://github.com/nvim-lualine/lualine.nvim',
     'https://github.com/nvim-tree/nvim-tree.lua',
     'https://github.com/lewis6991/gitsigns.nvim',
+	{ src = 'https://github.com/ms-jpq/coq_nvim', version = 'coq' },
+	{ src = 'https://github.com/ms-jpq/coq.artifacts', version = 'artifacts' },
+	'https://github.com/folke/which-key.nvim',
+	'https://github.com/windwp/nvim-autopairs',
   })
 end
 
@@ -48,8 +58,11 @@ require('nvim-surround').setup()
 -- Configure non-vscode plugins
 if not vim.g.vscode then
 	vim.cmd.colorscheme('vscode')
-
+	require('gitsigns').setup()
 	require('ibl').setup()
+	require('coq').setup()
+	require('which-key').setup()
+	require('nvim-autopairs').setup()
 	require('lualine').setup({
 		options = {
 			icons_enabled = false,
@@ -84,6 +97,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	callback = function() vim.hl.on_yank() end,
 })
 EOF
+
 
 
 " Main settings
@@ -127,8 +141,17 @@ syntax enable
 
 
 
+" Spell check
+"
+" Enable spell check in markdown files
+autocmd FileType markdown setlocal spell spelllang=nb,en_gb,en_us
+
+
+
 " Keymaps
 "
+" Append ';' at EOL
+nnoremap K m`A;<Esc>``
 " Don't yank on paste
 vmap p "_dP
 " Ctrl+Shift+[k or j] moves current line up or down
@@ -153,24 +176,7 @@ nmap æ $
 nnoremap <leader>u wbvU
 " Split current line at char 80 with linebreak
 nnoremap <leader>m 081lF<Space>s<CR><Esc>
-
-" Spell check
-"
-" Enable spell check in markdown files
-autocmd FileType markdown setlocal spell spelllang=nb,en_gb,en_us
 " Remap spell check suggestions to øz
 nnoremap <leader>z z=
-
-" Macros
-"
-" Append ';' at EOL
-function! AppendSemicolon()
-	let save_pos = getpos(".")
-	normal! A;
-	call setpos(".", save_pos)
-	normal! a
-endfunction
-" Map macro to <Shift-k>
-map K :call AppendSemicolon()<CR>
 
 
