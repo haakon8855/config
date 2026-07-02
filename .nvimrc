@@ -28,12 +28,12 @@ vim.opt.rtp:prepend(lazypath)
 -- Add plugins
 require('lazy').setup({
 	{
-		'mofiqul/vscode.nvim',
+		'folke/tokyonight.nvim',
 		lazy = false,
 		priority = 1000,
 		cond = not vim.g.vscode,
 		config = function()
-		  vim.cmd.colorscheme('vscode')
+			vim.cmd.colorscheme('tokyonight-night')
 		end,
 	},
 	{
@@ -41,10 +41,15 @@ require('lazy').setup({
 		opts = {},
 	},
 	{
+		'windwp/nvim-autopairs',
+		cond = not vim.g.vscode,
+		opts = {},
+	},
+	{
 		'lukas-reineke/indent-blankline.nvim',
 		cond = not vim.g.vscode,
 		main = "ibl",
-		event = { 'BufReadPost', 'BufNewFile' },
+		event = 'VeryLazy',
 		opts = {},
 	},
 	{
@@ -54,7 +59,7 @@ require('lazy').setup({
 		opts = {
 			options = {
 				icons_enabled = false,
-				theme = 'codedark',
+				theme = 'tokyonight',
 			},
 		},
 	},
@@ -86,11 +91,6 @@ require('lazy').setup({
 				{ '<leader>z', 'z=', desc = 'Spell suggestions' },
 			},
 		},
-	},
-	{
-		'windwp/nvim-autopairs',
-		cond = not vim.g.vscode,
-		opts = {},
 	},
 	{
 		'nvim-tree/nvim-tree.lua',
@@ -147,6 +147,23 @@ require('lazy').setup({
 			lastplace_open_folds = true,
 		},
 	},
+	{
+		'petertriho/nvim-scrollbar',
+		event = 'VeryLazy',
+		opts = function()
+			local hl = vim.api.nvim_get_hl(0, { name = 'CursorLine' })
+			local bg_color = hl.bg and string.format('#%06x', hl.bg) or nil
+			return {
+				handle = {
+					blend = 0,
+					color = bg_color,
+				},
+				handlers = {
+					gitsigns = true,
+				},
+			}
+		end,
+	},
 })
 EOF
 
@@ -162,12 +179,14 @@ set clipboard=unnamed
 set encoding=utf-8
 " Disable the default Vim startup message
 set shortmess+=I
-" Show line numbers (how is this not default on)
+
 set number
 " Use relative numbering style
 set relativenumber
+" Highlight current line
+set cursorline
 " Always show the status line at the bottom
-set laststatus=2
+set laststatus=0
 " Always allow backspacing
 set backspace=indent,eol,start
 " Case insensitive search
