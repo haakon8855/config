@@ -187,38 +187,26 @@ EOF
 
 " Main settings
 "
-" Disable Vi compatibility (thus enabling more Vim features)
-set nocompatible
 " Use system clipboard
-set clipboard=unnamed
-" Fix diacritical chars (�, �, �, etc.)
-set encoding=utf-8
-" Disable the default Vim startup message
-set shortmess+=I
+set clipboard=unnamedplus
 " Show line numbers (how is this not default on)
 set number
 " Use relative numbering style
 set relativenumber
 " Highlight current line
 set cursorline
-" One status line per window
-set laststatus=2
-" Always show the status line at the bottom
-set cmdheight=1
-" Always allow backspacing
-set backspace=indent,eol,start
 " Case insensitive search
 set ignorecase
 " Unless you start entering uppercase letters
 set smartcase
-" Search while typing search term
-set incsearch
-" Bell sound go __ (disable bell)
-set noerrorbells visualbell t_vb=
-" Sometimes you gotta click that mouse (enable mouse support)
-set mouse+=a
+" Disable bell
+set belloff=all
 " Set vim to autoindent
 set autoindent
+" Smartly indent new lines based on context
+set smartindent
+" Use spaces instead of tab
+set expandtab
 " Set ruler at column 80 and 100
 set colorcolumn=80,100
 " Set tab length
@@ -229,12 +217,8 @@ augroup filetype_settings
 	autocmd!
 	autocmd FileType markdown setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
-" Turn on syntax highlighting.
-syntax enable
 " Enable spell check in markdown files
 autocmd FileType markdown setlocal spell spelllang=nb,en_gb,en_us
-" Convert current file to use LF line endings
-command! LF set fileformat=unix
 
 
 
@@ -243,12 +227,14 @@ command! LF set fileformat=unix
 " Append ';' at EOL
 nnoremap K m`A;<Esc>``
 " Don't yank on paste
-vmap p "_dP
-" Disable ex mode
-nmap Q <Nop>
-" Disable command line mode
-map q: <Nop>
+xnoremap p "_dP
 " Map æ to end of line
-nmap æ $
+nnoremap æ $
 
+
+
+" Commands
+"
+" Convert current file to unix-style line endings (LF)
+command! LF set fileformat=unix
 
