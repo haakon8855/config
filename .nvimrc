@@ -180,6 +180,12 @@ require('lazy').setup({
 		ft = 'markdown',
 		opts = {},
 	},
+    {
+        'akinsho/git-conflict.nvim',
+        cond = not vim.g.vscode,
+		event = 'VeryLazy',
+        opts = {},
+    },
 })
 EOF
 
