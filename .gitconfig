@@ -49,6 +49,10 @@
 	# Auto-sign commits
 	gpgSign = true
 
+[tag]
+	gpgsign = true
+
 # Additional git config when instide specific subdirectory
 # [includeIf "gitdir:~/git/<subdirectory>/**"]
 	# path = ~/git/<subdirectory>/.gitconfig
+

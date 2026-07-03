@@ -254,4 +254,3 @@ vmap <leader>c S`
 " Convert current file to unix-style line endings (LF)
 command! LF set fileformat=unix
 
-
