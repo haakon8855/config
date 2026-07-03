@@ -178,12 +178,13 @@ require('lazy').setup({
 		'yousefhadder/markdown-plus.nvim',
 		cond = not vim.g.vscode,
 		ft = 'markdown',
+        event = 'VeryLazy',
 		opts = {},
 	},
     {
         'akinsho/git-conflict.nvim',
         cond = not vim.g.vscode,
-		event = 'VeryLazy',
+        event = 'VeryLazy',
         opts = {},
     },
 })
@@ -243,4 +244,5 @@ nnoremap æ $
 "
 " Convert current file to unix-style line endings (LF)
 command! LF set fileformat=unix
+
 
