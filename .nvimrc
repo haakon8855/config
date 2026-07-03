@@ -7,8 +7,8 @@
 " Set background shell to use (only on Windows)
 set shell=cmd.exe
 " Map leader key
-let mapleader = "ø"
-let maplocalleader = ","
+let mapleader = 'ø'
+let maplocalleader = ','
 
 
 
@@ -136,6 +136,7 @@ require('lazy').setup({
 		cond = not vim.g.vscode,
 		ft = { 'markdown' },
 		cmd = { 'MarkdownPreview', 'MarkdownPreviewStop', 'MarkdownPreviewToggle' },
+        event = 'VeryLazy',
 		build = function()
 			require('lazy').load({ plugins = { 'markdown-preview.nvim' } })
 			vim.fn['mkdp#util#install']()
@@ -180,6 +181,13 @@ require('lazy').setup({
 		ft = 'markdown',
         event = 'VeryLazy',
 		opts = {},
+        config = function()
+            require('markdown-plus').setup(opts)
+            vim.api.nvim_set_hl(0, '@markup.raw.markdown_inline', {
+                fg = '#7aa2f7',
+                italic = true,
+            })
+        end
 	},
     {
         'akinsho/git-conflict.nvim',
@@ -237,7 +245,8 @@ nnoremap K m`A;<Esc>``
 xnoremap p "_dP
 " Map æ to end of line
 nnoremap æ $
-
+" Wrap selection in `backticks` (inline code block)
+vmap <leader>c S`
 
 
 " Commands
