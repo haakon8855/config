@@ -23,60 +23,55 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	vim.fn.system({
-		'git', 'clone', '--filter=blob:none',
-		'https://github.com/folke/lazy.nvim.git',
-		'--branch=stable', lazypath,
-	})
+    vim.fn.system({
+        'git', 'clone', '--filter=blob:none',
+        'https://github.com/folke/lazy.nvim.git',
+        '--branch=stable', lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 
 -- Add plugins
 require('lazy').setup({
-	{
-		'folke/tokyonight.nvim',
-		lazy = false,
-		priority = 1000,
-		cond = not vim.g.vscode,
-		config = function()
-			vim.cmd.colorscheme('tokyonight-night')
-		end,
-	},
-	{
-		'kylechui/nvim-surround',
-		opts = {},
-	},
-	{
-		'windwp/nvim-autopairs',
-		cond = not vim.g.vscode,
-		opts = {},
-	},
-	{
-		'lukas-reineke/indent-blankline.nvim',
-		cond = not vim.g.vscode,
-		main = "ibl",
-		event = 'VeryLazy',
-		opts = {},
-	},
-	{
-		'nvim-lualine/lualine.nvim',
-		cond = not vim.g.vscode,
-		event = 'VeryLazy',
-		opts = {
-			options = {
-				icons_enabled = false,
-				theme = 'tokyonight',
-			},
-		},
-	},
-	{
-		'folke/which-key.nvim',
-		cond = not vim.g.vscode,
-		event = 'VeryLazy',
-		opts = {
-			icons = {
-				mappings = false,
-			},
+    {
+        'folke/tokyonight.nvim',
+        lazy = false,
+        priority = 1000,
+        cond = not vim.g.vscode,
+        config = function()
+            vim.cmd.colorscheme('tokyonight-night')
+        end,
+    },
+    {
+        'kylechui/nvim-surround',
+        opts = {},
+    },
+    {
+        'windwp/nvim-autopairs',
+        cond = not vim.g.vscode,
+        opts = {},
+    },
+    {
+        'lukas-reineke/indent-blankline.nvim',
+        cond = not vim.g.vscode,
+        main = "ibl",
+        event = 'VeryLazy',
+        opts = {},
+    },
+    {
+        'nvim-lualine/lualine.nvim',
+        cond = not vim.g.vscode,
+        event = 'VeryLazy',
+        opts = {
+            options = {
+                theme = 'tokyonight',
+            },
+        },
+    },
+    {
+        'folke/which-key.nvim',
+        event = 'VeryLazy',
+        opts = {
 			spec = {
 				-- Move lines
 				{ '<C-K>', ':m -2<CR>', desc = 'Move line up' },
@@ -100,6 +95,11 @@ require('lazy').setup({
 			},
 		},
 	},
+    {
+		'nvim-tree/nvim-web-devicons',
+        lazy = true,
+        opts = {},
+    },
 	{
 		'nvim-tree/nvim-tree.lua',
 		cond = not vim.g.vscode,
@@ -113,22 +113,7 @@ require('lazy').setup({
 		config = function()
 			require('nvim-tree').setup({
 				view = { width = 40 },
-				renderer = {
-					add_trailing = true,
-					icons = {
-						show = {
-							file = false,
-							folder = false,
-							folder_arrow = false,
-							git = false,
-						},
-					},
-				},
 			})
-			vim.api.nvim_set_hl(0, 'NvimTreeFolderName', { link = 'Directory' })
-			vim.api.nvim_set_hl(0, 'NvimTreeOpenedFolderName', { link = 'Directory' })
-			vim.api.nvim_set_hl(0, 'NvimTreeEmptyFolderName', { link = 'Directory' })
-			vim.api.nvim_set_hl(0, 'NvimTreeRootFolderName', { link = 'Directory' })
 		end,
 	},
 	{
@@ -195,6 +180,16 @@ require('lazy').setup({
         event = 'VeryLazy',
         opts = {},
     },
+    -- {
+    --     "rest-nvim/rest.nvim",
+    --     dependencies = {
+    --         "nvim-treesitter/nvim-treesitter",
+    --         opts = function (_, opts)
+    --             opts.ensure_installed = opts.ensure_installed or {}
+    --             table.insert(opts.ensure_installed, "http")
+    --         end,
+    --     }
+    -- },
 })
 EOF
 
