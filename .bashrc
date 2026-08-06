@@ -48,11 +48,11 @@ alias pip="pip3"
 # Open todo.md in vim
 alias todo="vim ~/todo.md"
 
-# Winget package manager
-alias ins="winget install"
-alias rem="winget uninstall"
-alias upd="winget update"
-alias search="winget search"
+# Scoop package manager
+alias ins="scoop install"
+alias rem="scoop uninstall"
+alias upd="scoop update"
+alias search="scoop search"
 
 # Typo
 alias gti="git"
@@ -63,8 +63,10 @@ alias sl="wsl sl -l"
 # Copy tree to clipboard
 alias tree="wsl tree --gitignore | iconv -f utf-8 -t utf-16le | clip"
 
-# Load custom bashrc for specific setup
-# source ~/.secondarybashrc
-
 export PATH=$PATH:~/.scripts/
 export DISPLAY=:0.0
+
+# Set default editor
+export VISUAL="nvim"
+export EDITOR="nvim"
+
