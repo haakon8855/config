@@ -50,6 +50,7 @@
 	gpgSign = true
 
 [tag]
+	# Auto-sign tags
 	gpgsign = true
 
 # Additional git config when instide specific subdirectory
