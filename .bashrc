@@ -5,18 +5,14 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Day-of-week emoji (0=Sun, 1=Mon, 2=Tue, 3=Wed, 4=Thu, 5=Fri, 6=Sat)
-_day_emojis=(☀️  💀 🔥 🥘 🔨 🍺 🎉)
-_day_emoji() { echo "${_day_emojis[$(date +%w)]}"; }
+# Prompt (hh:mm hakon <dir> $)
+export PS1='\[\e[36m\]\A\[\e[m\] \[\e[32m\]hakon\[\e[m\] \[\e[37m\]\W\[\e[m\] \[\e[36m\]\$\[\e[m\] '
 
-# Normal prompt (hh:mm [<username>@<hostname> <dir>] $)
-# export PS1='\[\e[36m\]\A\[\e[m\] [\[\e[32m\]hakon\[\e[m\]@\[\e[32m\]\h\[\e[m\] \W] \[\e[36m\]\\$\[\e[m\] '
+# Without username (hh:mm <dir> $)
+#export PS1='\[\e[36m\]\A\[\e[m\] \[\e[37m\]\W\[\e[m\] \[\e[36m\]\$\[\e[m\] '
 
-# Normal with WSL text (hh:mm [<username>@WSL <dir>] $)
-#export PS1='\[\e[36m\]\A\[\e[m\] [\[\e[32m\]\u\[\e[m\]@\[\e[38;5;178m\]WSL\[\e[m\] \W] \[\e[36m\]\\$\[\e[m\] '
-
-# With emoji
-export PS1='\[\e[36m\]\A\[\e[m\] [\[\e[32m\]hakon\[\e[m\] $(_day_emoji)  \W] \[\e[36m\]\\$\[\e[m\] '
+# WSL (hh:mm WSL <dir> $)
+#export PS1='\[\e[36m\]\A\[\e[m\] \[\e[38;5;178m\]WSL\[\e[m\] \[\e[37m\]\W\[\e[m\] \[\e[36m\]\$\[\e[m\] '
 
 # Enable ls colorized
 # and other ls aliases
@@ -62,9 +58,6 @@ alias sl="wsl sl -l"
 
 # Copy tree to clipboard
 alias tree="wsl tree --gitignore | iconv -f utf-8 -t utf-16le | clip"
-
-export PATH=$PATH:~/.scripts/
-export DISPLAY=:0.0
 
 # Set default editor
 export VISUAL="nvim"
