@@ -49,6 +49,7 @@ alias ins="scoop install"
 alias rem="scoop uninstall"
 alias upd="scoop update"
 alias search="scoop search"
+alias st="scoop status"
 
 # Typo
 alias gti="git"
