@@ -6,6 +6,10 @@ return {
         opts = {
             options = {
                 theme = 'tokyonight',
+                disabled_filetypes = {
+                    statusline = { 'dashboard' },
+                    winbar = { 'dashboard' },
+                }
             },
         },
     },
@@ -54,4 +58,49 @@ return {
 			}
 		end,
 	},
+    {
+        'lukas-reineke/indent-blankline.nvim',
+        cond = not vim.g.vscode,
+        main = "ibl",
+        event = 'VeryLazy',
+        opts = function()
+            local defaults = require('ibl.config').default_config
+            return {
+                exclude = {
+                    filetypes = vim.list_extend(
+                        vim.deepcopy(require('ibl.config').default_config.exclude.filetypes),
+                        { 'dashboard' }
+                    ),
+                },
+            }
+        end,
+    },
+    {
+        'echasnovski/mini.starter',
+        version = false,
+        config = function()
+            local starter = require('mini.starter')
+            starter.setup {
+                header = 'nvim',
+                footer = '',
+                items = {
+                    { name = 'New file', action = 'enew', section = 'Actions' },
+                    starter.sections.recent_files(8, false, true),
+                    { name = 'Quit', action = 'qall', section = 'Actions' },
+                },
+            }
+
+            vim.api.nvim_create_autocmd('User', {
+                pattern = 'MiniStarterOpened',
+                callback = function(args)
+                    vim.keymap.set('n', 'j', function()
+                        starter.update_current_item('next')
+                    end, { buffer = args.buf })
+                    vim.keymap.set('n', 'k', function()
+                        starter.update_current_item('prev')
+                    end, { buffer = args.buf })
+                end,
+            })
+        end,
+    },
 }

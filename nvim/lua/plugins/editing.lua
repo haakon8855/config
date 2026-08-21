@@ -9,13 +9,6 @@ return {
         opts = {},
     },
     {
-        'lukas-reineke/indent-blankline.nvim',
-        cond = not vim.g.vscode,
-        main = "ibl",
-        event = 'VeryLazy',
-        opts = {},
-    },
-    {
         'chrisgrieser/nvim-spider',
         keys = {
             { "w", "<cmd>lua require('spider').motion('w')<CR>", mode = { "n", "o", "x" } },
