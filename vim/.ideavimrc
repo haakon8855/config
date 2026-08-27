@@ -6,3 +6,5 @@ map <silent> B <Plug>CamelCaseMotion_b
 map <silent> E <Plug>CamelCaseMotion_e
 map <silent> gE <Plug>CamelCaseMotion_ge
 
+set visualbell
+
