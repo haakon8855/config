@@ -5,6 +5,8 @@
 
 [core]
 	editor = nvim
+    autocrlf = false
+    eol = lf
 
 [alias]
 	# Show a list of these aliases
