@@ -6,16 +6,23 @@ lua vim.opt.runtimepath:prepend(vim.fn.expand('~/git/config/nvim'))
 " Vimscript config
 "
 " General UI settings
-execute 'source ' . expand('~/git/config/nvim/vim/settings.vim')
+source <sfile>:h/vim/settings.vim
 " Key bindings
-execute 'source ' . expand('~/git/config/nvim/vim/keymaps.vim')
+source <sfile>:h/vim/keymaps.vim
 " Special autocommands
-execute 'source ' . expand('~/git/config/nvim/vim/autocmds.vim')
+source <sfile>:h/vim/autocmds.vim
 " Commands
-execute 'source ' . expand('~/git/config/nvim/vim/commands.vim')
+source <sfile>:h/vim/commands.vim
 
 " Lua config
 "
+" Enable lua module caching
+lua vim.loader.enable()
+" Disable unused providers (each costs a PATH search + process spawn)
+let g:loaded_python3_provider = 0
+let g:loaded_ruby_provider = 0
+let g:loaded_perl_provider = 0
+let g:loaded_node_provider = 0
 " Load general UI settings
 lua require('config.settings')
 " Bootstrap lazy.nvim and load plugins
